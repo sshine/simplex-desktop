@@ -3,49 +3,55 @@ use wasm_bindgen_futures::spawn_local;
 use web_sys::window;
 use yew::prelude::*;
 
-#[wasm_bindgen(module = "/public/glue.js")]
-extern "C" {
-    #[wasm_bindgen(js_name = invokeHello, catch)]
-    pub async fn hello(name: String) -> Result<JsValue, JsValue>;
-}
-
 fn main() {
     yew::Renderer::<App>::new().render();
 }
 
-#[function_component(App)]
-pub fn app() -> Html {
-    let welcome = use_state_eq(|| "".to_string());
-    let name = use_state_eq(|| "World".to_string());
-    let counter = use_state(|| 0);
-    let onclick = {
-        let counter = counter.clone();
-        move |_| {
-            let value = *counter + 1;
-            counter.set(value);
+enum Msg {
+    AddOne,
+}
+
+#[derive(Debug, Default)]
+struct App {
+    value: u64,
+}
+
+impl Component for App {
+    type Message = Msg;
+    type Properties = ();
+
+    fn create(_ctx: &Context<Self>) -> Self {
+        App::default()
+    }
+
+    fn update(&mut self, _ctx: &Context<Self>, msg: Self::Message) -> bool {
+        match msg {
+            Msg::AddOne => {
+                self.value += 1;
+                true
+            }
         }
-    };
-
-    {
-        let welcome = welcome.clone();
-        use_effect_with_deps(
-            move |name| {
-                update_welcome_message(welcome, name.clone());
-                || ()
-            },
-            (*name).clone(),
-        );
     }
 
-    let message = (*welcome).clone();
-
-    html! {
-        <div>
-            <h2 class={"heading"}>{message}</h2>
-            <button {onclick}>{ "+1" }</button>
-            <p>{ *counter }</p>
-        </div>
+    fn view(&self, ctx: &Context<Self>) -> Html {
+        html! {
+            <div>
+                <p>
+                    { "You clicked " }
+                    <button onclick={ctx.link().callback(|_| Msg::AddOne)}>{ "+1" }</button>
+                    { " " }
+                    { self.value }
+                    { " times." }
+                </p>
+            </div>
+        }
     }
+}
+
+#[wasm_bindgen(module = "/public/glue.js")]
+extern "C" {
+    #[wasm_bindgen(js_name = invokeHello, catch)]
+    pub async fn hello(name: String) -> Result<JsValue, JsValue>;
 }
 
 fn update_welcome_message(welcome: UseStateHandle<String>, name: String) {
@@ -62,5 +68,5 @@ fn update_welcome_message(welcome: UseStateHandle<String>, name: String) {
                 window.alert_with_message(&format!("Error: {e:?}")).unwrap();
             }
         }
-    });
+    })
 }
