@@ -24,12 +24,6 @@ jobs:
           toolchain: stable
           override: true
 
-      # Trunk is a WASM web application bundler for Rust. This is used for yew.
-      - name: Install trunk, tauri-cli
-        run: |
-          cargo install --locked trunk
-          cargo install --locked tauri-cli
-
       - name: Install Tauri system dependencies
         run: |
           sudo apt install -y libgtk-3-dev libsoup2.4-dev libjavascriptcoregtk-4.0-dev \
@@ -58,6 +52,12 @@ jobs:
             ~/.cargo/git/db/
             target/
           key: ${{ runner.os }}-cargo-${{ steps.vars.outputs.rustc-version }}-${{ hashFiles('**/Cargo.lock', '**/Cargo.toml') }}
+
+      # Trunk is a WASM web application bundler for Rust. This is used for yew.
+      - name: Install trunk, tauri-cli
+        run: |
+          cargo install --locked trunk
+          cargo install --locked tauri-cli
 
       # Calling tauri.conf.json when building yew front-end ensures CI builds the same way as we do.
       - name: Build yew front-end (trunk build)
