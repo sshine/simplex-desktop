@@ -1,9 +1,60 @@
+* {
+    /* this ensures that we explicitly control everything */
+    margin: 0px;
+}
 body {
-    margin: 20px;
+    /* margin: 20px; */
     background: #2d2d2d;
     color: white;
 }
 
 .heading {
     text-align: center;
+}
+
+.welcome-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.app-container {
+    display: grid; 
+    grid-template-columns: 280px 1fr;
+    gap: 0px;
+    height: 100%;
+}
+
+.contacts {
+    background: #1e1e1e;
+    height: 100vh;
+    /* User should be able to move this around later */
+    max-width: 280px;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.contact {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    cursor: pointer;
+    margin: 5px;
+    padding: 8px;
+}
+
+.contact:hover {
+    background: #383838;
+}
+
+.msg-preview {
+    color: grey;
+    text-overflow: ellipsis;
+}
+
+.contact > .name {
+    font-weight: bold;
 }

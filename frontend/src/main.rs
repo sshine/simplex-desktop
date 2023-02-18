@@ -3,17 +3,19 @@ use wasm_bindgen_futures::spawn_local;
 use web_sys::window;
 use yew::prelude::*;
 
+mod components;
+use components::{welcome::*, contacts::*};
+
+
 fn main() {
     yew::Renderer::<App>::new().render();
 }
 
 enum Msg {
-    AddOne,
 }
 
 #[derive(Debug, Default)]
 struct App {
-    value: u64,
 }
 
 impl Component for App {
@@ -26,23 +28,14 @@ impl Component for App {
 
     fn update(&mut self, _ctx: &Context<Self>, msg: Self::Message) -> bool {
         match msg {
-            Msg::AddOne => {
-                self.value += 1;
-                true
-            }
         }
     }
 
     fn view(&self, ctx: &Context<Self>) -> Html {
         html! {
-            <div>
-                <p>
-                    { "You clicked " }
-                    <button onclick={ctx.link().callback(|_| Msg::AddOne)}>{ "+1" }</button>
-                    { " " }
-                    { self.value }
-                    { " times." }
-                </p>
+            <div class="app-container">
+                <Contactlist/>
+                <Welcome/>
             </div>
         }
     }
