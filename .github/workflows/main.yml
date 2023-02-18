@@ -25,8 +25,10 @@ jobs:
           override: true
 
       # Trunk is a WASM web application bundler for Rust. This is used for yew.
-      - name: Install trunk
-        run: cargo install --locked trunk
+      - name: Install trunk, tauri-cli
+        run: |
+          cargo install --locked trunk
+          cargo install --locked tauri-cli
 
       - name: Install Tauri system dependencies
         run: |
