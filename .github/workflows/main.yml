@@ -16,12 +16,17 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@e2f20e631ae6d7dd3b768f56a5d2af784dd54791 # v2.5.0, 2022-10-13
 
-      - name: Install stable toolchain
+      - name: Install stable toolchain + additional wasm target
         uses: actions-rs/toolchain@b2417cde72dcf67f306c0ae8e0828a81bf0b189f # v1.0.7, 2020-03-24
         with:
+          target: wasm32-unknown-unknown
           profile: minimal
           toolchain: stable
           override: true
+
+      # Trunk is a WASM web application bundler for Rust. This is used for yew.
+      - name: Install trunk
+        run: cargo install --locked trunk
 
       - name: Install Tauri system dependencies
         run: |
