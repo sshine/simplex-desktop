@@ -1,0 +1,63 @@
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+name: Rust CI
+
+jobs:
+  build:
+    name: Build, lint, test and bench
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@e2f20e631ae6d7dd3b768f56a5d2af784dd54791 # v2.5.0, 2022-10-13
+
+      - name: Install stable toolchain
+        uses: actions-rs/toolchain@b2417cde72dcf67f306c0ae8e0828a81bf0b189f # v1.0.7, 2020-03-24
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+
+      # We always build with latest stable, so we also reset
+      # the CI cache when new versions of Rust are released.
+      - name: Determine build cache key
+        id: vars
+        run: |
+          RUST_VERSION=$(rustc -V | grep -Po '(?<=^rustc )\S+')
+          echo "rustc-version=$RUST_VERSION" >> $GITHUB_OUTPUT
+
+      # 1. Use both `**/Cargo.lock` and `**/Cargo.toml` in cache key: While Cargo.lock is enough
+      #    to ensure that we clear the cache when dependencies change, we currently don't treat
+      #    forgetting to commit Cargo.lock as a failure; changing Cargo.toml without bumping the
+      #    dependencies may clear the cache when it isn't necessary.
+      # 2. Don't include target/ -- only cache building 3rd-party libraries.
+      - name: Use build cache
+        uses: actions/cache@9b0c1fce7a93df8e3bb8926b0d6e9d89e92f20a7 # v3.0.11, 2022-10-13
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
+          key: ${{ runner.os }}-cargo-${{ steps.vars.outputs.rustc-version }}-${{ hashFiles('**/Cargo.lock', '**/Cargo.toml') }}
+
+      - name: cargo build
+        run: cargo build --all-targets
+
+      - name: cargo fmt
+        run: cargo fmt --all -- --check
+
+      - name: cargo clippy
+        run: cargo clippy --all-targets -- -D warnings
+
+      - name: cargo test
+        run: cargo test --all-targets
+
+      - name: cargo bench
+        run: cargo bench --all-targets

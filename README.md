@@ -1,4 +1,6 @@
-# Simplex-desktop
+# simplex-desktop
+
+[![Rust CI](https://github.com/sshine/simplex-desktop/actions/workflows/main.yml/badge.svg)](https://github.com/sshine/simplex-desktop/actions)
 
 A desktop application for [simplex-chat](https://simplex.chat). WIP, contributions are welcome.
 
