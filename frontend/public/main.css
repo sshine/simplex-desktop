@@ -2,10 +2,20 @@
     /* this ensures that we explicitly control everything */
     margin: 0px;
 }
+
+html {
+    --bg1: #2d2d2d;
+    --bg2: #1e1e1e;
+    --bg3: #383838;
+    --fg1: white;
+    --fg2: grey;
+    --fg3: #F2BC2F;
+}
+
 body {
     /* margin: 20px; */
-    background: #2d2d2d;
-    color: white;
+    background: var(--bg1);
+    color: var(--fg1);
 }
 
 .heading {
@@ -21,20 +31,29 @@ body {
 
 .app-container {
     display: grid; 
-    grid-template-columns: 280px 1fr;
+    grid-template-columns: 280px auto;
     gap: 0px;
-    height: 100%;
 }
 
-.contacts {
-    background: #1e1e1e;
-    height: 100vh;
+.sidebar {
+    background: var(--bg2);
     /* User should be able to move this around later */
     max-width: 280px;
+    padding-left: 5px;
 }
 
 .center-text {
     text-align: center;
+}
+
+.sticky-container {
+    /* padding-top: 0.7rem; */
+    height: 10vh;
+}
+
+.contacts {
+    height: calc(88vh);
+    overflow-x: scroll;
 }
 
 .contact {
@@ -44,10 +63,11 @@ body {
     cursor: pointer;
     margin: 5px;
     padding: 8px;
+    border-radius: 8px;
 }
 
 .contact:hover {
-    background: #383838;
+    background: var(--bg3);
 }
 
 .msg-preview {
@@ -57,4 +77,44 @@ body {
 
 .contact > .name {
     font-weight: bold;
+}
+
+.search-box > input {
+    padding: 4%;
+    margin: 4%;
+    width: 84%;
+    color: var(--fg1);
+    background-color: #2e2e2e;
+    border: unset;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.profile {
+    margin: 0.7rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile > .name {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.btn {
+    display: flex;
+    justify-self: center;
+    all: unset;
+    padding: 0.5rem;
+    background-color: var(--bg1);
+    color: var(--fg1);
+    border-radius: 8px;
+    cursor: pointer;
+}
+.btn:hover {
+    background-color: var(--bg3);
+}
+.btn:focus {
+    border: 1px solid var(--fg2);
 }

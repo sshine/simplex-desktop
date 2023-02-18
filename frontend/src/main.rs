@@ -4,19 +4,16 @@ use web_sys::window;
 use yew::prelude::*;
 
 mod components;
-use components::{welcome::*, contacts::*};
-
+use components::{contacts::*, sidebar::*, welcome::*};
 
 fn main() {
     yew::Renderer::<App>::new().render();
 }
 
-enum Msg {
-}
+enum Msg {}
 
 #[derive(Debug, Default)]
-struct App {
-}
+struct App {}
 
 impl Component for App {
     type Message = Msg;
@@ -27,14 +24,13 @@ impl Component for App {
     }
 
     fn update(&mut self, _ctx: &Context<Self>, msg: Self::Message) -> bool {
-        match msg {
-        }
+        match msg {}
     }
 
     fn view(&self, ctx: &Context<Self>) -> Html {
         html! {
             <div class="app-container">
-                <Contactlist/>
+                <SideBar/>
                 <Welcome/>
             </div>
         }

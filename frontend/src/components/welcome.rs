@@ -1,10 +1,7 @@
 use yew::prelude::*;
 
-
-
 #[function_component(Welcome)]
 pub fn welcome() -> Html {
-    
     // here we could maybe have shortcuts to
     // - recent conversations
     // - conversations with unread messages
@@ -19,7 +16,3 @@ pub fn welcome() -> Html {
         </div>
     }
 }
-
-
-
-
