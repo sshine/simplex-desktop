@@ -24,7 +24,7 @@ jobs:
           override: true
 
       - name: Install Tauri system dependencies
-        run: sudo apt install -y libgtk-3-dev libgdk3.0-cil-dev
+        run: sudo apt install -y libgtk-3-dev libsoup2.4-dev
 
       # We always build with latest stable, so we also reset
       # the CI cache when new versions of Rust are released.
