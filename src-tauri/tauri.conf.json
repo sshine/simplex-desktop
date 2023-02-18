@@ -2,12 +2,12 @@
   "build": {
     "distDir": "../frontend/dist",
     "devPath": "http://localhost:8080",
-    "beforeBuildCommand": "cd frontend && trunk build",
+    "beforeBuildCommand": "cd frontend && trunk build --release",
     "beforeDevCommand": "cd frontend && trunk serve",
     "withGlobalTauri": true
   },
   "package": {
-    "productName": "smolov-calc",
+    "productName": "Simplex-desktop",
     "version": "0.1.0"
   },
   "tauri": {
@@ -58,7 +58,7 @@
         "fullscreen": false,
         "height": 600,
         "resizable": true,
-        "title": "Smolov Calculator",
+        "title": "Simplex-desktop",
         "width": 800
       }
     ]
