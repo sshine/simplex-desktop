@@ -62,7 +62,8 @@ jobs:
       # Calling tauri.conf.json when building yew front-end ensures CI builds the same way as we do.
       - name: Build yew front-end (trunk build)
         run: |
-          eval $(jq -r '.build.beforeDevCommand' src-tauri/tauri.conf.json)
+          # eval $(jq -r '.build.beforeDevCommand' src-tauri/tauri.conf.json)
+          cd frontend && trunk build --release
 
       - name: Build tauri back-end (cargo build)
         run: cargo build --all-targets
