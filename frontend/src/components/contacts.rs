@@ -12,11 +12,6 @@ pub fn contact_list() -> Html {
         .iter()
         .map(|(n, m)| (n.to_string(), m.to_string()))
         .collect();
-    let contacts = std::iter::repeat(contacts)
-        .take(25)
-        .into_iter()
-        .flatten()
-        .collect::<Vec<(String, String)>>();
 
     html! {
         <>

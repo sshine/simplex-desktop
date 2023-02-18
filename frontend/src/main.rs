@@ -4,7 +4,7 @@ use web_sys::window;
 use yew::prelude::*;
 
 mod components;
-use components::{contacts::*, sidebar::*, welcome::*};
+use components::{sidebar::*, welcome::*};
 
 fn main() {
     yew::Renderer::<App>::new().render();
@@ -27,7 +27,7 @@ impl Component for App {
         match msg {}
     }
 
-    fn view(&self, ctx: &Context<Self>) -> Html {
+    fn view(&self, _ctx: &Context<Self>) -> Html {
         html! {
             <div class="app-container">
                 <SideBar/>
@@ -43,7 +43,7 @@ extern "C" {
     pub async fn hello(name: String) -> Result<JsValue, JsValue>;
 }
 
-fn update_welcome_message(welcome: UseStateHandle<String>, name: String) {
+fn _update_welcome_message(welcome: UseStateHandle<String>, name: String) {
     spawn_local(async move {
         // This will call our glue code all the way through to the tauri
         // back-end command and return the `Result<String, String>` as
