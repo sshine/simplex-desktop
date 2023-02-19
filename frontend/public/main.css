@@ -22,7 +22,7 @@ body {
     text-align: center;
 }
 
-.welcome-container {
+.welcome-container, .mid {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -120,4 +120,14 @@ body {
 }
 .btn:focus {
     border: 1px solid var(--fg2);
+}
+.floating-btn {
+    position: absolute;
+    bottom: 2vh;
+    right: 2vw;
+}
+.big-btn {
+    background: var(--bg2);
+    padding: 1rem;
+    border: var(--fg3) 1px solid;
 }

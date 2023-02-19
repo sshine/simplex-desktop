@@ -1,5 +1,14 @@
 use yew::prelude::*;
 
+#[function_component(NewConn)]
+fn new_connection_button() -> Html {
+    html! {
+        <button class="big-btn btn">
+            { "New chat" }
+        </button>
+    }
+}
+
 #[function_component(Welcome)]
 pub fn welcome() -> Html {
     // here we could maybe have shortcuts to
@@ -11,8 +20,13 @@ pub fn welcome() -> Html {
 
     html! {
         <div class="welcome-container">
-            <h2 class="center-text">{ "SimpleX Desktop v0.1.0" }</h2>
-            <p>{ "Start by making a connection" }</p>
+            <div class="mid">
+                <h2 class="center-text">{ "SimpleX Desktop v0.1.0" }</h2>
+                <p>{ "Start by making a connection" }</p>
+            </div>
+            <div class="floating-btn">
+                <NewConn/>
+            </div>
         </div>
     }
 }
