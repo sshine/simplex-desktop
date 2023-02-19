@@ -4,16 +4,31 @@ use web_sys::window;
 use yew::prelude::*;
 
 mod components;
-use components::{sidebar::*, welcome::*};
+use components::{chat::Chat, settings::Settings, sidebar::SideBar, welcome::Welcome};
 
 fn main() {
     yew::Renderer::<App>::new().render();
 }
 
-enum Msg {}
+// I wish there was an automatic way to do this
+// But this enum represents all the components that can be in the content-view (aka left side of
+// the screen)
+#[derive(Debug, Default)]
+pub enum ComponentOption {
+    Chat,
+    #[default]
+    Welcome,
+    Settings,
+}
+
+pub enum Msg {
+    ChangeView(ComponentOption),
+}
 
 #[derive(Debug, Default)]
-struct App {}
+struct App {
+    currect_page: ComponentOption,
+}
 
 impl Component for App {
     type Message = Msg;
@@ -24,14 +39,39 @@ impl Component for App {
     }
 
     fn update(&mut self, _ctx: &Context<Self>, msg: Self::Message) -> bool {
-        match msg {}
+        match msg {
+            Msg::ChangeView(component) => self.currect_page = component,
+        }
+        true
     }
 
-    fn view(&self, _ctx: &Context<Self>) -> Html {
+    fn view(&self, ctx: &Context<Self>) -> Html {
         html! {
             <div class="app-container">
-                <SideBar/>
-                <Welcome/>
+                <SideBar
+                    cb={ctx.link().callback(move |msg| msg)}
+                />
+                <div class="content-view">
+                    {
+                        match self.currect_page {
+                            ComponentOption::Welcome => {
+                                html! {
+                                    <Welcome/>
+                                }
+                            }
+                            ComponentOption::Chat => {
+                                html! {
+                                    <Chat/>
+                                }
+                            }
+                            ComponentOption::Settings => {
+                                html! {
+                                    <Settings/>
+                                }
+                            }
+                        }
+                    }
+                </div>
             </div>
         }
     }

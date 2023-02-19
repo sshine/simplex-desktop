@@ -1,7 +1,15 @@
 use yew::prelude::*;
 
+use crate::ComponentOption::*;
+use crate::Msg;
+
+#[derive(Properties, PartialEq)]
+pub struct Props {
+    pub cb: Callback<Msg>,
+}
+
 #[function_component(Contactlist)]
-pub fn contact_list() -> Html {
+pub fn contact_list(props: &Props) -> Html {
     // dummy data
     let contacts = vec![
         ("Josh", "Hey"),
@@ -13,6 +21,12 @@ pub fn contact_list() -> Html {
         .map(|(n, m)| (n.to_string(), m.to_string()))
         .collect();
 
+    let cb = props.cb.clone();
+    let onclick = Callback::from(move |e: MouseEvent| {
+        e.prevent_default();
+        cb.emit(Msg::ChangeView(Chat))
+    });
+
     html! {
         <>
             <div class="contacts">
@@ -20,7 +34,7 @@ pub fn contact_list() -> Html {
                     html! {
                         contacts.iter().map(|(n, m)| {
                             html! {
-                                <div class="contact">
+                                <div class="contact" onclick={onclick.clone()}>
                                     <p class="name"> { n } </p>
                                     <p class="msg-preview"> { m } </p>
                                 </div>
