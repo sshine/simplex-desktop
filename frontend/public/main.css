@@ -48,11 +48,12 @@ body {
 
 .sticky-container {
     /* padding-top: 0.7rem; */
-    height: 10vh;
+    min-height: fit-content;
 }
 
 .contacts {
-    height: calc(88vh);
+    height: calc(100vh - 123.2px);
+    /* 100vh - the height of the floating part which happens to be 123.2 px rn */
     overflow-x: scroll;
 }
 
@@ -73,6 +74,8 @@ body {
 .msg-preview {
     color: grey;
     text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .contact > .name {
