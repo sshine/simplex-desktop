@@ -36,11 +36,10 @@ jobs:
           RUST_VERSION=$(rustc -V | grep -Po '(?<=^rustc )\S+')
           echo "rustc-version=$RUST_VERSION" >> $GITHUB_OUTPUT
 
-      # 1. Use both `**/Cargo.lock` and `**/Cargo.toml` in cache key: While Cargo.lock is enough
-      #    to ensure that we clear the cache when dependencies change, we currently don't treat
-      #    forgetting to commit Cargo.lock as a failure; changing Cargo.toml without bumping the
-      #    dependencies may clear the cache when it isn't necessary.
-      # 2. Don't include target/ -- only cache building 3rd-party libraries.
+      # Use both `**/Cargo.lock` and `**/Cargo.toml` in cache key: While Cargo.lock is enough to
+      # ensure that we clear the cache when dependencies change, we currently don't treat forgetting
+      # to commit Cargo.lock as a failure. Changing Cargo.toml without bumping the dependencies may
+      # clear the cache when it isn't necessary.
       - name: Use build cache
         uses: actions/cache@9b0c1fce7a93df8e3bb8926b0d6e9d89e92f20a7 # v3.0.11, 2022-10-13
         with:
@@ -52,11 +51,16 @@ jobs:
             target/
           key: ${{ runner.os }}-cargo-${{ steps.vars.outputs.rustc-version }}-${{ hashFiles('**/Cargo.lock', '**/Cargo.toml') }}
 
-      # Trunk is a WASM web application bundler for Rust. This is used for yew.
       - name: Install trunk, tauri-cli
         run: |
-          cargo install --locked trunk
-          cargo install --locked tauri-cli
+          # if $1 isn't a callable program, install $2.
+          cargo_install_() {
+            if ! command -v $1 >/dev/null 2>&1; then
+              cargo install --locked $2
+            fi
+          }
+          cargo_install_ trunk trunk
+          cargo_install_ cargo-tauri tauri-cli
 
       # Calling tauri.conf.json when building yew front-end ensures CI builds the same way as we do.
       - name: Build yew front-end (trunk build)
