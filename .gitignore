@@ -7,3 +7,6 @@ target/
 # IDEs and editors
 .nvimlog
 .idea/
+
+# Some file on windows
+.dccache
