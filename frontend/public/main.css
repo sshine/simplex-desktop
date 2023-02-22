@@ -1,5 +1,4 @@
 * {
-    /* this ensures that we explicitly control everything */
     margin: 0px;
     user-select: none;
     -webkit-user-select: none;
@@ -56,6 +55,10 @@ body {
 
 .text-accent {
     color: var(--fg3);
+}
+
+.divider {
+    height: 8px;
 }
 
 .sticky-container {
@@ -204,6 +207,7 @@ body {
     grid-area: title;
     height: fit-content;
     font-weight: bold;
+    margin: 12px;
 }
 
 .chat-container {
@@ -211,7 +215,7 @@ body {
     height: 100%;
     display: grid;
     grid-template-columns: 1fr 330px;
-    grid-template-rows: 44px 1fr auto;
+    grid-template-rows: auto 1fr auto;
     grid-template-areas: 
     "title sidebar"
     "chat sidebar"

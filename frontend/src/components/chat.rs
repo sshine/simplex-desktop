@@ -1,3 +1,4 @@
+use super::util::*;
 use yew::prelude::*;
 
 #[function_component(Chat)]
@@ -5,6 +6,7 @@ pub fn chat() -> Html {
     // TODO add a toggle to contact info
     // TODO hide contact info if screen is too small for it
     // TODO some of these elements should be <button>s
+    // TODO add a profile picture
     let messages = vec![
         "Connected",
         "Hello, how are you?",
@@ -32,16 +34,18 @@ pub fn chat() -> Html {
                 <p>
                 {"Name / Full Name"}
                 </p>
+                <Divider/>
                 <p>
                 {"Verify security code"}
                 </p>
                 <p>
                 {"Contact preferences"}
                 </p>
+                <Divider/>
                 <p class="text-accent">
                 {"Switch receiving address"}
                 </p>
-                <p class="">
+                <p>
                 { "Network status" }
                 </p>
                 <p>
@@ -50,13 +54,14 @@ pub fn chat() -> Html {
                 <p>
                 {"Sending via"}
                 </p>
-
+                <Divider/>
                 <p class="warning">
                 { "Clear chat" }
                 </p>
                 <p class="warning-red">
                 { "Delete contact" }
                 </p>
+                <Divider/>
                 <p>
                 { "Local name" }
                 </p>
