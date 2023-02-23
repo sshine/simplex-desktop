@@ -8,6 +8,7 @@ html {
     --bg1: #2d2d2d;
     --bg2: #1e1e1e;
     --bg3: #383838;
+    --bg4: #282828;
     --fg1: white;
     --fg2: grey;
     --fg3: #F2BC2F;
@@ -131,6 +132,10 @@ body {
     border-radius: 8px;
     cursor: pointer;
 }
+
+.dark {
+    background: var(--bg2);
+}
 .btn:hover {
     background-color: var(--bg3);
 }
@@ -173,7 +178,8 @@ body {
     outline: none;
     overflow: scroll;
     overflow-wrap: break-word;
-
+    /* https://stackoverflow.com/questions/15855951/how-to-fit-textarea-exactly-inside-a-div-css */
+    box-sizing: border-box;
 }
 
 .contact-info {
@@ -184,6 +190,7 @@ body {
     height: 100%;
     overflow-x: hidden;
     overflow-y: scroll;
+    background: var(--bg4);
 }
 
 .chat {
@@ -204,13 +211,18 @@ body {
     background: var(--bg2);
 }
 .chat-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     grid-area: title;
     height: fit-content;
-    font-weight: bold;
     margin: 12px;
 }
+.contact-name {
+    font-weight: bold;
+}
 
-.chat-container {
+.chat-container.with-contact {
     width: 100%;
     height: 100%;
     display: grid;
@@ -221,12 +233,23 @@ body {
     "chat sidebar"
     "message-box sidebar";
 }
+.chat-container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: 
+    "title"
+    "chat"
+    "message-box";
+}
 .contact-info > p {
     background: var(--bg2);
     border-radius: 7px;
     padding: 0.5rem;
     margin: 0.25rem;
 }
+.contact-info
 .warning {
     color: #eab30e;
 }
