@@ -214,7 +214,8 @@ body {
     align-items: center;
     grid-area: title;
     height: fit-content;
-    margin: 12px;
+    padding: 12px;
+    box-shadow: 0 3px 8px var(--bg2);
 }
 .contact-name {
     font-weight: bold;
@@ -229,7 +230,7 @@ body {
     grid-template-columns: 1fr 330px;
     grid-template-rows: auto 1fr auto;
     grid-template-areas: 
-    "title sidebar"
+    "title title"
     "chat sidebar"
     "message-box sidebar";
 }
