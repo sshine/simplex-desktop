@@ -153,9 +153,8 @@ body {
     border: var(--fg3) 1px solid;
 }
 
-
 .message-box {
-    margin: 18px;
+    margin: 18px 15px;
     max-height: 45vh;
     overflow-x: hidden;
     overflow-y: scroll;
@@ -164,6 +163,9 @@ body {
 }
 
 .message-box > textarea {
+    /* appearance: none; */
+    /* height: auto; */
+    /* min-height: 55px; */
     width: 100%;
     color: var(--fg1);
     background-color: var(--bg3);
@@ -173,13 +175,14 @@ body {
     border-radius: 10px;
     line-height: 1.375rem;
     padding: 12px;
-    min-height: 1.7rem;
 
     outline: none;
     overflow: scroll;
     overflow-wrap: break-word;
     /* https://stackoverflow.com/questions/15855951/how-to-fit-textarea-exactly-inside-a-div-css */
     box-sizing: border-box;
+    white-space: break-word;
+    word-break: break-all;
 }
 
 .contact-info {
@@ -203,7 +206,6 @@ body {
     padding: 0.5rem 28px;
     user-select: text;
     -webkit-user-select: text;
-
 }
 .message:hover {
     background: var(--bg2);
@@ -225,8 +227,7 @@ body {
     width: 100%;
     height: 100vh;
     display: grid;
-    overflow-y: scroll;
-    overflow-x: scroll;
+    overflow: scroll;
     grid-template-columns: 1fr 330px;
     grid-template-rows: auto 1fr auto;
     grid-template-areas: 
@@ -238,8 +239,7 @@ body {
     width: 100%;
     height: 100vh;
     display: grid;
-    overflow-y: scroll;
-    overflow-x: scroll;
+    overflow: scroll;
     grid-template-rows: auto 1fr auto;
     grid-template-areas: 
     "title"
@@ -252,7 +252,7 @@ body {
     padding: 8px;
     margin: 4px;
 }
-.contact-info
+
 .warning {
     color: #eab30e;
 }
