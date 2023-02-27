@@ -55,7 +55,7 @@ body {
 }
 
 .text-accent {
-    color: var(--fg3);
+    color: var(--fg3) !important;
 }
 
 .divider {
@@ -133,6 +133,12 @@ body {
     cursor: pointer;
 }
 
+.warning {
+    color: #eab30e !important;
+}
+.warning-red {
+    color: #db3425 !important;
+}
 .dark {
     background: var(--bg2);
 }
@@ -140,7 +146,7 @@ body {
     background-color: var(--bg3);
 }
 .btn:focus {
-    border: 1px solid var(--fg2);
+    background-color: var(--bg3);
 }
 .floating-btn {
     position: absolute;
@@ -246,16 +252,34 @@ body {
     "chat"
     "message-box";
 }
-.contact-info > p {
+.contact-info {
+    display: flex;
+    flex-direction: column;
+}
+.contact-info > button {
+    /* border: none; */
+    /* text-align: left; */
+    /* font-family: unset; */
+    /* text-rendering: geometricPrecision; */
+    /* This was too painful so I am not deleting the above right now... */
+    all: unset;
+    cursor: pointer;
+}
+.contact-info > button:focus, .contact-info > button:hover {
+    outline: none;
+    background-color: var(--bg1);
+}
+.contact-info > p, .contact-info > button {
+    color: var(--fg1);
     background: var(--bg2);
     border-radius: 7px;
     padding: 8px;
     margin: 4px;
+    font-size: 1rem;
+}
+.contact-info > p {
+    user-select: text;
+    -webkit-user-select: text;
 }
 
-.warning {
-    color: #eab30e;
-}
-.warning-red {
-    color: #db3425;
-}
+

@@ -50,32 +50,32 @@ pub fn chat() -> Html {
                             {"Name / Full Name"}
                             </p>
                             <Divider/>
-                            <p>
+                            <button>
                             {"Verify security code"}
-                            </p>
-                            <p>
+                            </button>
+                            <button>
                             {"Contact preferences"}
-                            </p>
+                            </button>
                             <Divider/>
-                            <p class="text-accent">
+                            <button class="text-accent">
                             {"Switch receiving address"}
-                            </p>
-                            <p>
+                            </button>
+                            <button>
                             { "Network status" }
-                            </p>
-                            <p>
+                            </button>
+                            <button>
                             { "Receiving via" }
-                            </p>
-                            <p>
+                            </button>
+                            <button>
                             {"Sending via"}
-                            </p>
+                            </button>
                             <Divider/>
-                            <p class="warning">
+                            <button class="warning">
                             { "Clear chat" }
-                            </p>
-                            <p class="warning-red">
+                            </button>
+                            <button class="warning-red">
                             { "Delete contact" }
-                            </p>
+                            </button>
                             <Divider/>
                             <p>
                             { "Local name" }
