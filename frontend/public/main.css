@@ -68,8 +68,8 @@ body {
 }
 
 .contacts {
-  height: calc(100vh - 123.2px);
-  /* 100vh - the height of the floating part which happens to be 123.2 px rn */
+  height: calc(100vh - 125px);
+  /* 100vh - the height of the floating part which happens to be around 125 px rn */
   overflow-y: scroll;
   overflow-x: hidden;
 }
