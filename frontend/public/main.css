@@ -1,285 +1,286 @@
 * {
-    margin: 0px;
-    user-select: none;
-    -webkit-user-select: none;
+  margin: 0px;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 html {
-    --bg1: #2d2d2d;
-    --bg2: #1e1e1e;
-    --bg3: #383838;
-    --bg4: #282828;
-    --fg1: white;
-    --fg2: grey;
-    --fg3: #F2BC2F;
+  --bg1: #2d2d2d;
+  --bg2: #1e1e1e;
+  --bg3: #383838;
+  --bg4: #282828;
+  --fg1: white;
+  --fg2: grey;
+  --fg3: #f2bc2f;
 }
 
 body {
-    /* margin: 20px; */
-    background: var(--bg1);
-    color: var(--fg1);
+  /* margin: 20px; */
+  background: var(--bg1);
+  color: var(--fg1);
 }
 
 .heading {
-    text-align: center;
+  text-align: center;
 }
 
 .app-container {
-    display: grid; 
-    grid-template-columns: 280px auto;
-    gap: 0px;
+  display: grid;
+  grid-template-columns: 280px auto;
+  gap: 0px;
 }
 
 .content-view {
-    display: flex;
+  display: flex;
 }
 
-.welcome-container, .mid {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 100vh;
+.welcome-container,
+.mid {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
 }
 
 .sidebar {
-    background: var(--bg2);
-    /* Maybe the user should be able to move this around later..? */
-    max-width: 280px;
-    padding-left: 5px;
+  background: var(--bg2);
+  /* Maybe the user should be able to move this around later..? */
+  max-width: 280px;
+  padding-left: 5px;
 }
 
 .center-text {
-    text-align: center;
+  text-align: center;
 }
 
 .text-accent {
-    color: var(--fg3) !important;
+  color: var(--fg3) !important;
 }
 
 .divider {
-    height: 8px;
+  height: 8px;
 }
 
 .sticky-container {
-    min-height: fit-content;
+  min-height: fit-content;
 }
 
 .contacts {
-    height: calc(100vh - 123.2px);
-    /* 100vh - the height of the floating part which happens to be 123.2 px rn */
-    overflow-y: scroll;
-    overflow-x: hidden;
+  height: calc(100vh - 123.2px);
+  /* 100vh - the height of the floating part which happens to be 123.2 px rn */
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .contact {
-    -webkit-user-select: none;
-    user-select: none;
-    -webkit-user-drag: none;
-    cursor: pointer;
-    margin: 5px;
-    padding: 8px;
-    border-radius: 8px;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  cursor: pointer;
+  margin: 5px;
+  padding: 8px;
+  border-radius: 8px;
 }
 
 .contact:hover {
-    background: var(--bg3);
+  background: var(--bg3);
 }
 
 .msg-preview {
-    color: grey;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+  color: grey;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .contact > .name {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .search-box > input {
-    padding: 4%;
-    margin: 4%;
-    width: 84%;
-    color: var(--fg1);
-    background-color: var(--bg1);
-    border: unset;
-    font-size: 1rem;
-    border-radius: 10px;
+  padding: 4%;
+  margin: 4%;
+  width: 84%;
+  color: var(--fg1);
+  background-color: var(--bg1);
+  border: unset;
+  font-size: 1rem;
+  border-radius: 10px;
 }
 
 .profile {
-    margin: 0.7rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+  margin: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .profile > .name {
-    font-size: 1.5rem;
-    font-weight: bold;
-    cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
 }
 .btn {
-    display: flex;
-    justify-self: center;
-    all: unset;
-    padding: 0.5rem;
-    background-color: var(--bg1);
-    color: var(--fg1);
-    border-radius: 8px;
-    cursor: pointer;
+  display: flex;
+  justify-self: center;
+  all: unset;
+  padding: 8px;
+  background-color: var(--bg1);
+  color: var(--fg1);
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 .warning {
-    color: #eab30e !important;
+  color: #eab30e !important;
 }
 .warning-red {
-    color: #db3425 !important;
+  color: #db3425 !important;
 }
 .dark {
-    background: var(--bg2);
+  background: var(--bg2);
 }
 .btn:hover {
-    background-color: var(--bg3);
+  background-color: var(--bg3);
 }
 .btn:focus {
-    background-color: var(--bg3);
+  background-color: var(--bg3);
 }
 .floating-btn {
-    position: absolute;
-    bottom: 2vh;
-    right: 2vw;
+  position: absolute;
+  bottom: 2vh;
+  right: 2vw;
 }
 .big-btn {
-    background: var(--bg2);
-    padding: 1rem;
-    border: var(--fg3) 1px solid;
+  background: var(--bg2);
+  padding: 16px;
+  border: var(--fg3) 1px solid;
 }
 
 .message-box {
-    margin: 18px 15px;
-    max-height: 45vh;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    backface-visibility: hidden;
-    grid-area: message-box;
+  margin: 18px 15px;
+  max-height: 45vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  backface-visibility: hidden;
+  grid-area: message-box;
 }
 
 .message-box > textarea {
-    /* appearance: none; */
-    /* height: auto; */
-    /* min-height: 55px; */
-    width: 100%;
-    color: var(--fg1);
-    background-color: var(--bg3);
-    border: none;
-    resize: none;
-    font-size: 1rem;
-    border-radius: 10px;
-    line-height: 1.375rem;
-    padding: 12px;
+  /* appearance: none; */
+  /* height: auto; */
+  /* min-height: 55px; */
+  width: 100%;
+  color: var(--fg1);
+  background-color: var(--bg3);
+  border: none;
+  resize: none;
+  font-size: 1rem;
+  border-radius: 10px;
+  line-height: 1.375rem;
+  padding: 12px;
 
-    outline: none;
-    overflow: scroll;
-    overflow-wrap: break-word;
-    /* https://stackoverflow.com/questions/15855951/how-to-fit-textarea-exactly-inside-a-div-css */
-    box-sizing: border-box;
-    white-space: break-word;
-    word-break: break-all;
+  outline: none;
+  overflow: scroll;
+  overflow-wrap: break-word;
+  /* https://stackoverflow.com/questions/15855951/how-to-fit-textarea-exactly-inside-a-div-css */
+  box-sizing: border-box;
+  white-space: break-word;
+  word-break: break-all;
 }
 
 .contact-info {
-    width: 330px;
-    grid-area: sidebar;
-    position: relative;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    background: var(--bg4);
+  width: 330px;
+  grid-area: sidebar;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background: var(--bg4);
 }
 
 .chat {
-    overflow-x: hidden;
-    overflow-y: scroll;
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
-    grid-area: chat;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  grid-area: chat;
 }
 .message {
-    padding: 0.5rem 28px;
-    user-select: text;
-    -webkit-user-select: text;
+  padding: 0.5rem 28px;
+  user-select: text;
+  -webkit-user-select: text;
 }
 .message:hover {
-    background: var(--bg2);
+  background: var(--bg2);
 }
 .chat-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    grid-area: title;
-    height: fit-content;
-    padding: 12px;
-    box-shadow: 0 3px 8px var(--bg2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  grid-area: title;
+  height: fit-content;
+  padding: 12px;
+  box-shadow: 0 3px 8px var(--bg2);
 }
 .contact-name {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .chat-container.with-contact {
-    width: 100%;
-    height: 100vh;
-    display: grid;
-    overflow: scroll;
-    grid-template-columns: 1fr 330px;
-    grid-template-rows: auto 1fr auto;
-    grid-template-areas: 
-    "title title"
-    "chat sidebar"
-    "message-box sidebar";
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  overflow: scroll;
+  grid-template-columns: 1fr 330px;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    'title title'
+    'chat sidebar'
+    'message-box sidebar';
 }
 .chat-container {
-    width: 100%;
-    height: 100vh;
-    display: grid;
-    overflow: scroll;
-    grid-template-rows: auto 1fr auto;
-    grid-template-areas: 
-    "title"
-    "chat"
-    "message-box";
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  overflow: scroll;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    'title'
+    'chat'
+    'message-box';
 }
 .contact-info {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 .contact-info > button {
-    /* border: none; */
-    /* text-align: left; */
-    /* font-family: unset; */
-    /* text-rendering: geometricPrecision; */
-    /* This was too painful so I am not deleting the above right now... */
-    all: unset;
-    cursor: pointer;
+  /* border: none; */
+  /* text-align: left; */
+  /* font-family: unset; */
+  /* text-rendering: geometricPrecision; */
+  /* This was too painful so I am not deleting the above right now... */
+  all: unset;
+  cursor: pointer;
 }
-.contact-info > button:focus, .contact-info > button:hover {
-    outline: none;
-    background-color: var(--bg1);
+.contact-info > button:focus,
+.contact-info > button:hover {
+  outline: none;
+  background-color: var(--bg1);
 }
-.contact-info > p, .contact-info > button {
-    color: var(--fg1);
-    background: var(--bg2);
-    border-radius: 7px;
-    padding: 8px;
-    margin: 4px;
-    font-size: 1rem;
+.contact-info > p,
+.contact-info > button {
+  color: var(--fg1);
+  background: var(--bg2);
+  border-radius: 7px;
+  padding: 8px;
+  margin: 4px;
+  font-size: 1rem;
 }
 .contact-info > p {
-    user-select: text;
-    -webkit-user-select: text;
+  user-select: text;
+  -webkit-user-select: text;
 }
-
-
