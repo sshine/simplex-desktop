@@ -1,0 +1,6 @@
+/* Some css fixes for windows */
+/* Windows uses WebView2 which is chromium based */
+
+*::-webkit-scrollbar {
+  display: none;
+}
