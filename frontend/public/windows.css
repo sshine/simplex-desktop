@@ -1,6 +1,11 @@
 /* Some css fixes for windows */
 /* Windows uses WebView2 which is chromium based */
-
-*::-webkit-scrollbar {
+/* 
+@media only screen and (min-height: 600px) {
+  .contact-info::-webkit-scrollbar {
+    display: none;
+  }
+} */
+/* .chat-container::-webkit-scrollbar {
   display: none;
-}
+} */
