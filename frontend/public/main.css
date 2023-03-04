@@ -15,9 +15,8 @@ html {
 }
 
 ::-webkit-scrollbar {
-  /* background-color: var(--bg3); */
-  width: 8px;
-  /* color: var(--fg2); */
+  width: 6px;
+  display: none;
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 3px;
@@ -31,12 +30,14 @@ html {
   background-color: var(--bg3);
   border-radius: 3px;
 }
-::-webkit-scrollbar-corner {
-  width: 8px;
+
+/* Scrollbars on elements are only shown when the element itself is hovered */
+/* The only possible exception to this should be the chat view but it's currently not implemented*/
+*:hover::-webkit-scrollbar {
+  display: block;
 }
 
 body {
-  /* margin: 20px; */
   background: var(--bg1);
   color: var(--fg1);
 }
