@@ -224,13 +224,14 @@ body {
 }
 
 .chat {
+  height: calc(100vh - 171px);
   overflow-x: hidden;
-  /* overflow-y: scroll; */
   display: flex;
-  justify-content: flex-end;
-  flex-direction: column;
+  flex-direction: column-reverse;
+  flex-wrap: nowrap;
   grid-area: chat;
 }
+
 .message {
   padding: 0.5rem 28px;
   user-select: text;

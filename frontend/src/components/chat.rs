@@ -1,5 +1,3 @@
-use std::ops::Not;
-
 use super::util::*;
 use yew::prelude::*;
 
@@ -14,11 +12,13 @@ pub fn chat() -> Html {
         "Hello, how are you?",
         "Are you new on simplex?",
     ];
+    let messages: Vec<&str> = std::iter::repeat(messages).take(14).flatten().collect();
+
     let sidebar_visible = use_state_eq(|| true);
     let toggle_sidebar = {
         let val = sidebar_visible.clone();
         Callback::from(move |_| {
-            val.set(val.not());
+            val.set(!*val);
         })
     };
     html! {
@@ -33,10 +33,10 @@ pub fn chat() -> Html {
             </section>
             <div class="chat">
                 {
-                    messages.iter().map(|msg| {
+                    messages.iter().rev().enumerate().map(|(i, msg)| {
                         html!{
                             <p class="message">
-                                {msg}
+                                {i}{msg}
                             </p>
                         }
                     }).collect::<Html>()
