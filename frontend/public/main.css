@@ -21,6 +21,7 @@ html {
   border-radius: 3px;
   background-clip: content-box;
   background-color: var(--fg2);
+  min-height: 40px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background-color: var(--fg3);
