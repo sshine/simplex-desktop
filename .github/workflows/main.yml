@@ -68,5 +68,5 @@ jobs:
       - name: cargo test
         run: cargo test --all-targets
 
-      - name: cargo bench
-        run: cargo bench --all-targets
+      # - name: cargo bench
+      #   run: cargo bench --all-targets
