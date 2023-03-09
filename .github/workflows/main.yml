@@ -21,6 +21,7 @@ jobs:
         uses: dtolnay/rust-toolchain@e12eda571dc9a5ee5d58eecf4738ec291c66f295 # v1, 2023-02-19
         with:
           toolchain: stable
+          targets: wasm32-unknown-unknown
 
       - name: Install Tauri system dependencies
         run: |
