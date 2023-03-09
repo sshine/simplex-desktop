@@ -55,14 +55,14 @@ jobs:
       - name: cargo fmt
         run: cargo fmt --all -- --check
 
-      - name: cargo clippy
-        run: cargo clippy --all-targets -- -D warnings
-
       - name: Build yew front-end (trunk build)
         run: cd frontend && trunk build --release
 
       - name: Build tauri back-end (cargo build)
         run: cargo build --all-targets
+
+      - name: cargo clippy
+        run: cargo clippy --all-targets -- -D warnings
 
       - name: cargo test
         run: cargo test --all-targets
