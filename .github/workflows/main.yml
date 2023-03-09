@@ -14,27 +14,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout sources
-        uses: actions/checkout@e2f20e631ae6d7dd3b768f56a5d2af784dd54791 # v2.5.0, 2022-10-13
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0, 2023-01-05
 
-      - name: Install stable toolchain + additional wasm target
-        uses: actions-rs/toolchain@b2417cde72dcf67f306c0ae8e0828a81bf0b189f # v1.0.7, 2020-03-24
+      - name: Install stable toolchain
+        id: toolchain
+        uses: dtolnay/rust-toolchain@e12eda571dc9a5ee5d58eecf4738ec291c66f295 # v1, 2023-02-19
         with:
-          target: wasm32-unknown-unknown
-          profile: minimal
           toolchain: stable
-          override: true
 
       - name: Install Tauri system dependencies
         run: |
           sudo apt install -y libgtk-3-dev libsoup2.4-dev libjavascriptcoregtk-4.0-dev libwebkit2gtk-4.0-dev
-
-      # We always build with latest stable, so we also reset
-      # the CI cache when new versions of Rust are released.
-      - name: Determine build cache key
-        id: vars
-        run: |
-          RUST_VERSION=$(rustc -V | grep -Po '(?<=^rustc )\S+')
-          echo "rustc-version=$RUST_VERSION" >> $GITHUB_OUTPUT
 
       # Use both `**/Cargo.lock` and `**/Cargo.toml` in cache key: While Cargo.lock is enough to
       # ensure that we clear the cache when dependencies change, we currently don't treat forgetting
@@ -49,7 +39,7 @@ jobs:
             ~/.cargo/registry/cache/
             ~/.cargo/git/db/
             target/
-          key: ${{ runner.os }}-cargo-${{ steps.vars.outputs.rustc-version }}-${{ hashFiles('**/Cargo.lock', '**/Cargo.toml') }}
+          key: ${{ runner.os }}-cargo-${{ steps.toolchain.outputs.cachekey }}-${{ hashFiles('**/Cargo.lock', '**/Cargo.toml') }}
 
       - name: Install trunk, tauri-cli
         run: |
@@ -62,20 +52,17 @@ jobs:
           cargo_install_ trunk trunk
           cargo_install_ cargo-tauri tauri-cli
 
-      # Calling tauri.conf.json when building yew front-end ensures CI builds the same way as we do.
-      - name: Build yew front-end (trunk build)
-        run: |
-          # eval $(jq -r '.build.beforeDevCommand' src-tauri/tauri.conf.json)
-          cd frontend && trunk build --release
-
-      - name: Build tauri back-end (cargo build)
-        run: cargo build --all-targets
-
       - name: cargo fmt
         run: cargo fmt --all -- --check
 
       - name: cargo clippy
         run: cargo clippy --all-targets -- -D warnings
+
+      - name: Build yew front-end (trunk build)
+        run: cd frontend && trunk build --release
+
+      - name: Build tauri back-end (cargo build)
+        run: cargo build --all-targets
 
       - name: cargo test
         run: cargo test --all-targets
