@@ -6,9 +6,3 @@ codegen-units = 1
 opt-level = 3
 lto = true
 panic = "abort"
-
-[dependencies]
-remove_dir_all = "0.8.0"
-
-[dev-dependencies]
-remove_dir_all = "0.8.0"
