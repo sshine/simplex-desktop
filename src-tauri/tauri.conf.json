@@ -1,6 +1,6 @@
 {
   "build": {
-    "distDir": "../../frontend/dist",
+    "distDir": "../frontend/dist",
     "devPath": "http://localhost:8080",
     "beforeBuildCommand": "cd frontend && trunk build --release",
     "beforeDevCommand": "cd frontend && trunk serve",
