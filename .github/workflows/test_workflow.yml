@@ -6,7 +6,7 @@ on:
     branches:
       - austin-dev
 
-name: Rust CI
+name: Austin Test
 
 jobs:
   build:
@@ -42,7 +42,7 @@ jobs:
             ~/.cargo/bin/cargo-tauri/
             ~/.cargo/bin/trunk/
             target/
-          key: ${{ runner.os }}-cargo-${{ steps.toolchain.outputs.cachekey }}-${{ hashFiles('**/Cargo.lock', '**/Cargo.toml') }}
+          key: ${{ runner.os }}-cargo-${{ steps.toolchain.outputs.cachekey }}
 
       - name: Install trunk, tauri-cli
         run: |
