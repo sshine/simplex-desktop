@@ -42,7 +42,7 @@ jobs:
             ~/.cargo/bin/cargo-tauri/
             ~/.cargo/bin/trunk/
             target/
-          key: ${{ runner.os }}-cargo-${{ steps.toolchain.outputs.cachekey }}
+          key: ${{ runner.os }}-cargo-${{ steps.toolchain.outputs.cachekey }}-${{ hashFiles('**/Cargo.lock') }}-${{ hashFiles('**/Cargo.toml') }}
 
       - name: Install trunk, tauri-cli
         run: |
