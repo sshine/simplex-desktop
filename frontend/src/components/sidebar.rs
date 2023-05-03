@@ -5,6 +5,7 @@ use yew::prelude::*;
 // to be moved?
 #[function_component(Search)]
 pub fn search_box() -> Html {
+    // TODO change into a <textarea>?
     html! {
         <div class="search-box">
             <input type="text" placeholder="Search"/>
@@ -30,7 +31,7 @@ pub fn current_profile(props: &Props) -> Html {
     html! {
         <div class="profile">
             <p class="name" onclick={show_welcome}>{name}</p>
-            <button class="btn" onmousedown={show_settings}>{"settings"}</button>
+            <button class="btn" onclick={show_settings}>{"settings"}</button>
         </div>
     }
 }

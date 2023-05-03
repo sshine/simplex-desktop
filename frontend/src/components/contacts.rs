@@ -16,10 +16,7 @@ pub fn contact_list(props: &Props) -> Html {
         ("Bob", "How are you?"),
         ("Alice", "Connected"),
     ];
-    let contacts: Vec<(String, String)> = contacts
-        .iter()
-        .map(|(n, m)| (n.to_string(), m.to_string()))
-        .collect();
+    let contacts: Vec<(&str, &str)> = std::iter::repeat(contacts).take(20).flatten().collect();
 
     let cb = props.cb.clone();
     let onclick = Callback::from(move |e: MouseEvent| {
