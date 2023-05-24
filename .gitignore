@@ -10,3 +10,4 @@ target/
 
 # Some file on windows
 .dccache
+.DS_Store
