@@ -9,4 +9,4 @@ wasm-bindgen = "0.2.86"
 wasm-bindgen-futures = "0.4.36"
 web-sys = "0.3.63"
 yew = { version = "0.20.0", features = ["csr"] }
-yew-router = "0.17.0"
+yew-router = "0.18.0"
